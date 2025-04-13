@@ -1,0 +1,290 @@
+/* css/estilos.css */
+
+:root {
+    --bonsaiki-verde-profundo: #3A5A40; /* Un verde más oscuro y sereno */
+    --bonsaiki-verde-medio: #588157;  /* Verde principal, un poco más vibrante */
+    --bonsaiki-verde-claro: #A3B18A;  /* Verde más claro para acentos */
+    --bonsaiki-tierra: #A0522D;      /* Siena (marrón) */
+    --bonsaiki-crema: #FDF8E1;       /* Un crema más cálido, como papel viejo */
+    --bonsaiki-texto: #344E41;       /* Un gris verdoso oscuro para texto */
+    --bonsaiki-gris-suave: #DAD7CD;  /* Gris suave para bordes o fondos sutiles */
+}
+
+/* --- Fuentes --- */
+/* Añade esta línea en tu <head> si quieres probar Merriweather para títulos: */
+/* <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet"> */
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bonsaiki-crema);
+    /* Opcional: Textura sutil de fondo */
+    /* background-image: url('path/to/subtle-texture.png'); */
+}
+
+body {
+    font-family: 'Nunito', sans-serif; /* Fuente principal para el cuerpo */
+    color: var(--bonsaiki-texto);
+    line-height: 1.6; /* Mejora legibilidad de párrafos */
+}
+
+/* --- Títulos --- */
+h1, h2, h3, h4, h5, h6, .title, .subtitle {
+    /* Descomenta la siguiente línea si usas Merriweather o similar para títulos */
+    /* font-family: 'Merriweather', serif; */
+    color: var(--bonsaiki-verde-profundo); /* Color base para títulos */
+}
+
+/* --- Navbar --- */
+.navbar.is-fixed-top {
+    background-color: var(--bonsaiki-verde-profundo);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra un poco más pronunciada */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+.navbar-item, .navbar-link {
+    color: var(--bonsaiki-crema);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+.navbar-item:hover,
+.navbar-link:hover,
+.navbar-item.is-active { /* Estilo para el item activo */
+    background-color: var(--bonsaiki-verde-medio);
+    color: white;
+}
+.navbar-burger {
+    color: var(--bonsaiki-crema);
+}
+.navbar-brand .navbar-item {
+    font-weight: bold;
+    font-size: 1.6rem; /* Un poco más grande */
+    color: white; /* Asegurar color blanco */
+}
+.navbar-brand .navbar-item:hover {
+     background-color: transparent !important; /* Evitar cambio de fondo en el brand */
+     color: white !important; /* Mantener color blanco */
+}
+/* Activar menú móvil */
+.navbar-menu.is-active {
+    background-color: var(--bonsaiki-verde-profundo); /* Fondo consistente */
+}
+
+
+/* --- Hero Section --- */
+.hero.is-bonsaiki {
+    background-color: var(--bonsaiki-verde-medio); /* Color base si la imagen no carga */
+    /* === CAMBIO AQUÍ: Nueva URL de imagen === */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),url('../img/portada.jpg');
+    background-size: cover;
+    background-position: center center; /* Asegura que la imagen esté centrada */
+    border-bottom: 5px solid var(--bonsaiki-verde-profundo); /* Borde inferior decorativo */
+}
+.hero .title.is-1 {
+    font-size: 3.5rem; /* Más impacto */
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+.hero .subtitle.is-3 {
+    color: var(--bonsaiki-crema); /* Usar el color crema */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    margin-bottom: 2rem;
+}
+.hero .button.is-primary {
+    background-color: var(--bonsaiki-verde-claro);
+    color: var(--bonsaiki-verde-profundo);
+    font-weight: bold;
+    border: 1px solid var(--bonsaiki-verde-profundo); /* Borde sutil */
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+.hero .button.is-primary:hover {
+    background-color: white;
+    color: var(--bonsaiki-verde-profundo);
+    transform: scale(1.05); /* Ligero zoom al pasar el ratón */
+}
+
+
+/* --- Secciones --- */
+.section {
+    padding: 4rem 1.5rem; /* Más padding vertical */
+}
+.section-title.is-2 {
+    text-align: center;
+    margin-bottom: 3rem; /* Más espacio debajo del título */
+    color: var(--bonsaiki-verde-profundo);
+    font-weight: bold;
+    position: relative; /* Para el pseudo-elemento decorativo */
+    padding-bottom: 0.5rem;
+}
+/* Línea decorativa debajo del título de sección */
+.section-title.is-2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--bonsaiki-verde-medio);
+    margin: 0.75rem auto 0; /* Centrar la línea */
+}
+
+/* --- Cards (Catálogo y Blog) --- */
+.card {
+    background-color: white; /* Fondo blanco para contraste */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(54, 78, 65, 0.1); /* Sombra más suave y verdosa */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--bonsaiki-gris-suave); /* Borde muy sutil */
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(54, 78, 65, 0.15);
+}
+.card-image img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+.card-content {
+    flex-grow: 1;
+    padding: 1.5rem; /* Aumentar padding interno */
+}
+.card .title.is-4, .card .title.is-5 {
+    margin-bottom: 0.5rem; /* Ajustar espacio bajo título */
+    color: var(--bonsaiki-verde-profundo);
+}
+.card .subtitle.is-6, .card .subtitle.is-7 {
+    color: var(--bonsaiki-verde-medio); /* Subtítulo con verde medio */
+    margin-bottom: 1rem;
+}
+.card .content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--bonsaiki-texto); /* Asegurar color de texto */
+}
+.card .content p {
+    margin-bottom: 0.5rem; /* Espacio entre párrafos de detalles */
+}
+.price {
+    font-weight: bold;
+    color: var(--bonsaiki-verde-profundo);
+    font-size: 1.25em; /* Ligeramente más grande */
+    display: block; /* Asegurar que ocupe su línea */
+    margin-bottom: 0.5rem;
+}
+.card .tag {
+    margin-top: 0.75rem;
+    font-weight: bold;
+}
+.tag.is-success {
+    background-color: var(--bonsaiki-verde-medio);
+    color: white;
+}
+.tag.is-danger {
+    background-color: #E76F51; /* Un rojo/naranja menos estridente */
+    color: white;
+}
+
+/* --- Botones Generales (Fuera del Hero) --- */
+.button.is-primary {
+    background-color: var(--bonsaiki-verde-medio);
+    border-color: transparent;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+.button.is-primary:hover {
+    background-color: var(--bonsaiki-verde-profundo);
+}
+/* Botón pequeño "Leer más" */
+.button.is-small.is-primary {
+    font-size: 0.8rem;
+    margin-top: 1rem; /* Más espacio arriba */
+}
+
+/* --- Sección Contacto --- */
+#contacto {
+    background-color: var(--bonsaiki-gris-suave); /* Fondo gris suave para diferenciar */
+}
+.contact-form .label {
+    color: var(--bonsaiki-verde-profundo); /* Etiquetas más oscuras */
+    font-weight: bold;
+}
+.contact-form .input, .contact-form .textarea {
+    border-color: var(--bonsaiki-verde-claro);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+.contact-form .input:focus,
+.contact-form .textarea:focus,
+.contact-form .input:active,
+.contact-form .textarea:active {
+    border-color: var(--bonsaiki-verde-medio);
+    box-shadow: 0 0 0 0.125em rgba(88, 129, 87, 0.25); /* Sombra de foco con color temático */
+}
+.contact-form .icon .fas {
+    color: var(--bonsaiki-verde-claro); /* Iconos del formulario */
+}
+/* Placeholder del Mapa */
+.map-placeholder {
+    background-color: #C8C8A9; /* Un gris verdoso claro */
+    border-radius: 8px;
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--bonsaiki-verde-profundo);
+    font-style: italic;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--bonsaiki-verde-medio);
+}
+/* Información de contacto */
+#contacto .content p {
+    color: var(--bonsaiki-texto);
+}
+#contacto .content strong {
+    color: var(--bonsaiki-verde-profundo);
+}
+
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--bonsaiki-verde-profundo); /* Usar el verde oscuro */
+    color: var(--bonsaiki-crema);
+    padding: 3rem 1.5rem; /* Más padding vertical */
+    border-top: 5px solid var(--bonsaiki-verde-medio); /* Borde superior decorativo */
+}
+.footer p {
+    color: var(--bonsaiki-crema); /* Asegurar color de texto */
+}
+.footer a {
+    color: white; /* Blanco para más contraste */
+    font-weight: bold;
+    text-decoration: none; /* Quitar subrayado por defecto */
+    border-bottom: 1px dotted white; /* Subrayado punteado sutil */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+.footer a:hover {
+    color: var(--bonsaiki-verde-claro); /* Color verde claro al pasar el mouse */
+    border-bottom-color: var(--bonsaiki-verde-claro);
+}
+
+/* --- Ajustes Responsivos Adicionales (Opcional) --- */
+@media screen and (max-width: 768px) {
+    .hero .title.is-1 {
+        font-size: 2.5rem; /* Reducir tamaño en móvil */
+    }
+    .hero .subtitle.is-3 {
+        font-size: 1.25rem;
+    }
+    .section {
+        padding: 3rem 1rem; /* Menos padding lateral en móvil */
+    }
+    .section-title.is-2 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+    .map-placeholder {
+        height: 300px; /* Reducir altura del mapa en móvil */
+        margin-bottom: 2rem; /* Espacio si se apila sobre el formulario */
+    }
+}

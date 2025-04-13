@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es" class="has-navbar-fixed-top">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonsaiki - El Arte del Bonsái</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+
+</head>
+<body>
+    <div  id="inicio"></div>
+
+
+    <nav id="nav_main" 
+        class="navbar is-fixed-top" 
+        role="navigation" 
+        aria-label="main navigation">
+    </nav>
+
+
+    <section id="catalogo" class="section">
+        <div class="container">
+            <h2 class="title is-2 section-title">Nuestro Catálogo de Bonsáis</h2>
+            <div class="columns is-multiline is-centered">
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image">
+                                <img src="https://placehold.co/600x450/90EE90/333333?text=Bonsái+Arce" alt="[Imagen de Bonsái Arce Japonés]">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <p class="title is-4">Arce Japonés</p>
+                            <p class="subtitle is-6">Acer palmatum</p>
+                            <div class="content">
+                                <p>Edad: 8 años</p>
+                                <p class="price">Precio: $120.00</p>
+                                <span class="tag is-success">Disponible</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image">
+                                <img src="https://placehold.co/600x450/8FBC8F/333333?text=Bonsái+Pino" alt="[Imagen de Bonsái Pino Negro]">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <p class="title is-4">Pino Negro Japonés</p>
+                            <p class="subtitle is-6">Pinus thunbergii</p>
+                            <div class="content">
+                                <p>Edad: 15 años</p>
+                                <p class="price">Precio: $250.00</p>
+                                <span class="tag is-success">Disponible</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image">
+                                <img src="https://placehold.co/600x450/3CB371/333333?text=Bonsái+Olivo" alt="[Imagen de Bonsái Olivo]">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <p class="title is-4">Olivo</p>
+                            <p class="subtitle is-6">Olea europaea</p>
+                            <div class="content">
+                                <p>Edad: 5 años</p>
+                                <p class="price">Precio: $90.00</p>
+                                <span class="tag is-danger">Agotado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Bonsaiki</strong> por <a href="#">Tu Nombre/Empresa</a>. El código fuente está licenciado
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. El contenido del sitio web es © 2025 Bonsaiki.
+            </p>
+             <p>
+                <a href="#inicio">Volver arriba</a>
+            </p>
+        </div>
+    </footer>
+
+
+
+
+    <script type="module">
+        import { initMenu } from './assets/menu.js'; // Ruta corregida
+        document.addEventListener("DOMContentLoaded", initMenu);
+    </script>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach( el => {
+                el.addEventListener('click', () => {
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+                });
+            });
+
+            // Close navbar menu when a link is clicked (optional, good UX)
+             const $navbarLinks = Array.prototype.slice.call(document.querySelectorAll('.navbar-item'), 0);
+             $navbarLinks.forEach( el => {
+                if (el.href && el.href.includes('#')) { // Check if it's an internal link
+                    el.addEventListener('click', () => {
+                        const $navbarBurger = el.closest('.navbar').querySelector('.navbar-burger');
+                        const target = $navbarBurger.dataset.target;
+                        const $target = document.getElementById(target);
+
+                        // If menu is active, close it
+                        if ($navbarBurger.classList.contains('is-active')) {
+                             $navbarBurger.classList.remove('is-active');
+                             $target.classList.remove('is-active');
+                        }
+                    });
+                }
+             });
+        });
+    </script>
+
+</body>
+</html>
