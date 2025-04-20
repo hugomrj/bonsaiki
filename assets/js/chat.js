@@ -14,7 +14,7 @@ export class BonsaiChatUI {
         if (e.key === 'Enter') this.handleUserInput();
       });
     }
-  
+  /*
     handleUserInput() {
       const message = this.userInput.value.trim();
       if (message === '') return;
@@ -26,7 +26,50 @@ export class BonsaiChatUI {
       // this.showTypingIndicator();
       // await this.callYourIAAPI(message);
     }
-  
+  */
+
+
+    async handleUserInput() {
+      const message = this.userInput.value.trim();
+      if (message === '') return;
+    
+      this.addUserMessage(message);
+      this.userInput.value = '';
+    
+      const typing = this.showTypingIndicator();
+    
+      try {
+        const response = await fetch('http://3.12.160.19/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            pregunta: message,
+            historial: [] // si querés podés guardar historial real
+          })
+        });
+    
+        const data = await response.json();
+        this.removeTypingIndicator(typing);
+    
+        if (data.respuesta) {
+          this.addBotMessage(data.respuesta);
+        } else {
+          this.addBotMessage('Error: respuesta no válida.');
+        }
+      } catch (err) {
+        this.removeTypingIndicator(typing);
+        this.addBotMessage('Error al conectar con el servidor.');
+        console.error(err);
+      }
+    }
+    
+
+
+
+
+
     addUserMessage(text) {
       this.addMessage(text, 'user');
     }

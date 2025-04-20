@@ -8,6 +8,10 @@
     --bonsaiki-crema: #FDF8E1;       /* Un crema más cálido, como papel viejo */
     --bonsaiki-texto: #344E41;       /* Un gris verdoso oscuro para texto */
     --bonsaiki-gris-suave: #DAD7CD;  /* Gris suave para bordes o fondos sutiles */
+    --bonsaiki-fondo-negro: rgb(46, 51, 61);
+    --bonsaiki-texto-negro: rgb(52, 78, 65);
+
+    
 }
 
 /* --- Fuentes --- */
@@ -33,6 +37,10 @@ h1, h2, h3, h4, h5, h6, .title, .subtitle {
     /* font-family: 'Merriweather', serif; */
     color: var(--bonsaiki-verde-profundo); /* Color base para títulos */
 }
+
+
+
+
 
 /* --- Navbar --- */
 .navbar.is-fixed-top {
@@ -62,10 +70,23 @@ h1, h2, h3, h4, h5, h6, .title, .subtitle {
      background-color: transparent !important; /* Evitar cambio de fondo en el brand */
      color: white !important; /* Mantener color blanco */
 }
+
+
+.navbar {
+  background: linear-gradient(
+    to right,
+    var(--bonsaiki-verde-profundo) 0%,
+    var(--bonsaiki-verde-profundo) 50%,
+    var(--bonsaiki-verde-medio) 100%
+  );
+}
+
 /* Activar menú móvil */
 .navbar-menu.is-active {
-    background-color: var(--bonsaiki-verde-profundo); /* Fondo consistente */
+    background-color: var(--bonsaiki-fondo-negro); 
 }
+
+
 
 
 /* --- Hero Section --- */
@@ -353,6 +374,7 @@ h1, h2, h3, h4, h5, h6, .title, .subtitle {
   .message-body {
     line-height: 1.6;
     font-size: 0.95rem;
+    color: var(--bonsaiki-texto-negro);
   }
   
   /* Mensajes del bot */

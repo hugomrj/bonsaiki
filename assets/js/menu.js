@@ -23,13 +23,11 @@ function genNavbar() {
                     <a class="navbar-item" href="catalogo.html">
                         Catálogo
                     </a>
-                    <a class="navbar-item" href="blog.html">
-                        Blog
-                    </a>
+
                     <a class="navbar-item" href="index.html#contacto">
                         Contacto
                     </a>
-                    <a class="navbar-item" href="index.html#chatia">
+                    <a class="navbar-item" href="index.html#chat-ia">
                         Chat IA
                     </a>
 

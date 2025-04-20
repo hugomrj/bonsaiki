@@ -147,69 +147,6 @@
 
 
 
-    <section id="blog" class="section">
-        <div class="container">
-            <h2 class="title is-2 section-title">Blog Bonsaiki</h2>
-            <div class="columns is-multiline is-centered">
-                <div class="column is-12-mobile is-6-tablet is-4-desktop">
-                    <div class="card">
-                         <div class="card-image">
-                            <figure class="image">
-                                <img src="https://placehold.co/600x450/9ACD32/333333?text=Riego+Bonsái" alt="[Imagen sobre riego de bonsáis]">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-5">El Arte de Regar tu Bonsái</p>
-                            <p class="subtitle is-7 has-text-grey">Publicado: 01 Abril 2025</p>
-                            <div class="content">
-                                Aprende la frecuencia y técnica correctas para mantener tu bonsái hidratado y saludable...
-                                <br>
-                                <a href="#" class="button is-small is-primary mt-3">Leer más</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-12-mobile is-6-tablet is-4-desktop">
-                    <div class="card">
-                         <div class="card-image">
-                            <figure class="image">
-                                <img src="https://placehold.co/600x450/6B8E23/FFFFFF?text=Poda+Bonsái" alt="[Imagen sobre poda de bonsáis]">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-5">Guía de Poda para Principiantes</p>
-                             <p class="subtitle is-7 has-text-grey">Publicado: 15 Marzo 2025</p>
-                            <div class="content">
-                                Descubre los tipos de poda y cómo dar forma a tu árbol en miniatura sin dañarlo...
-                                <br>
-                                <a href="#" class="button is-small is-primary mt-3">Leer más</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <div class="column is-12-mobile is-6-tablet is-4-desktop">
-                    <div class="card">
-                         <div class="card-image">
-                            <figure class="image">
-                                <img src="https://placehold.co/600x450/556B2F/FFFFFF?text=Especies+Bonsái" alt="[Imagen sobre especies de bonsáis]">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-5">Especies Populares para Bonsái</p>
-                             <p class="subtitle is-7 has-text-grey">Publicado: 01 Marzo 2025</p>
-                            <div class="content">
-                               Explora las características de los árboles más comunes utilizados en el arte del bonsái...
-                                <br>
-                                <a href="#" class="button is-small is-primary mt-3">Leer más</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-        </div>
-    </section>
-
-
 
 <!-- Agrega esta sección donde quieras que aparezca el chat -->
 <section id="chat-ia" class="section has-background-white-ter">
@@ -328,30 +265,26 @@
         </div>
     </section>
 
+
+    
     <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <strong>Bonsaiki</strong> por <a href="#">Tu Nombre/Empresa</a>. El código fuente está licenciado
-                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. El contenido del sitio web es © 2025 Bonsaiki.
-            </p>
-             <p>
-                <a href="#inicio">Volver arriba</a>
-            </p>
-        </div>
     </footer>
+      
+
 
 
     <script type="module">
         import { initMenu } from './assets/js/menu.js'; // Ruta corregida
         import { initChatUI } from './assets/js/chat.js';
-//        document.addEventListener("DOMContentLoaded", initMenu);
+        import { initFooter } from './assets/js/footer.js';
 
-document.addEventListener("DOMContentLoaded", () => {
-    initMenu(); 
-    const chatUI = initChatUI();
-    window.bonsaiChatUI = chatUI; // Para acceso global si lo necesitas
+        document.addEventListener("DOMContentLoaded", () => {
+            initMenu(); 
+            const chatUI = initChatUI();
+            window.bonsaiChatUI = chatUI; // Para acceso global si lo necesitas
+            initFooter(); 
 
-  });
+        });
 
     </script>
 
