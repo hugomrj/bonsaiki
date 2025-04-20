@@ -11,7 +11,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
 
 
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="assets/css/estilos.css ">
 
 
 </head>
@@ -209,6 +209,71 @@
         </div>
     </section>
 
+
+
+<!-- Agrega esta sección donde quieras que aparezca el chat -->
+<section id="chat-ia" class="section has-background-white-ter">
+    <div class="container">
+      <h2 class="title is-2 section-title">Asistente Virtual de Bonsáis</h2>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="chat-container box">
+            <!-- Historial del chat -->
+            <div id="chat-history" class="chat-history">
+              <!-- Mensaje inicial del bot -->
+              <div class="message bot-message">
+                <div class="message-content">
+                  <div class="message-header">
+                    <span class="icon-text">
+                      <span class="icon">
+                        <i class="fas fa-ai"></i> 
+                      </span>
+                      <span>Asistente Bonsaiki</span>
+                    </span>
+                  </div>
+                  <div class="message-body">
+                    ¡Hola! 🌱 Soy tu asistente virtual especializado en bonsáis. 
+                    Puedes preguntarme sobre cuidados, especies, técnicas de poda 
+                    o cualquier tema relacionado con el arte del bonsái.
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Los mensajes de la conversación se agregarán aquí dinámicamente -->
+            </div>
+            
+            <!-- Área de entrada del usuario -->
+            <div class="chat-input">
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <input id="user-input" class="input" type="text" 
+                         placeholder="Escribe tu pregunta sobre bonsáis..." 
+                         autocomplete="off">
+                </div>
+                <div class="control">
+                  <button id="send-button" class="button is-primary">
+                    <span class="icon">
+                      <i class="fas fa-paper-plane"></i>
+                    </span>
+                    <span>Enviar</span>
+                  </button>
+                </div>
+              </div>
+              <p class="help">
+                Ejemplos: "¿Cómo cuidar un bonsái en invierno?", 
+                "¿Qué especie recomiendas para interior?"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
     <section id="contacto" class="section has-background-light">
         <div class="container">
             <h2 class="title is-2 section-title">Contacto</h2>
@@ -277,8 +342,17 @@
 
 
     <script type="module">
-        import { initMenu } from './assets/menu.js'; // Ruta corregida
-        document.addEventListener("DOMContentLoaded", initMenu);
+        import { initMenu } from './assets/js/menu.js'; // Ruta corregida
+        import { initChatUI } from './assets/js/chat.js';
+//        document.addEventListener("DOMContentLoaded", initMenu);
+
+document.addEventListener("DOMContentLoaded", () => {
+    initMenu(); 
+    const chatUI = initChatUI();
+    window.bonsaiChatUI = chatUI; // Para acceso global si lo necesitas
+
+  });
+
     </script>
 
 

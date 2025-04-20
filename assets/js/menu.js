@@ -13,8 +13,8 @@ function genNavbar() {
                     <span aria-hidden="true"></span>
                 </a>
                 
-
             </div>
+
             <div id="navbarBonsaiki" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="index.html">
@@ -29,6 +29,11 @@ function genNavbar() {
                     <a class="navbar-item" href="index.html#contacto">
                         Contacto
                     </a>
+                    <a class="navbar-item" href="index.html#chatia">
+                        Chat IA
+                    </a>
+
+
                 </div>
             </div>
         </div>
