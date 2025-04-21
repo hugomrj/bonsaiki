@@ -39,7 +39,7 @@ export class BonsaiChatUI {
       const typing = this.showTypingIndicator();
     
       try {
-        const response = await fetch('http://3.12.160.19/chat', {
+        const response = await fetch('https://hugomrjpy.pythonanywhere.com/chat-bonsaiki', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
