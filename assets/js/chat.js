@@ -14,6 +14,8 @@ export class BonsaiChatUI {
         if (e.key === 'Enter') this.handleUserInput();
       });
     }
+
+
   /*
     handleUserInput() {
       const message = this.userInput.value.trim();
@@ -30,6 +32,9 @@ export class BonsaiChatUI {
 
 
     async handleUserInput() {
+
+      const lastMessages = getLastMessages();
+
       const message = this.userInput.value.trim();
       if (message === '') return;
     
@@ -37,6 +42,10 @@ export class BonsaiChatUI {
       this.userInput.value = '';
     
       const typing = this.showTypingIndicator();
+
+    
+//console.log(lastMessages)
+
     
       try {
         const response = await fetch('https://hugomrjpy.pythonanywhere.com/chat-bonsaiki', {
@@ -46,7 +55,7 @@ export class BonsaiChatUI {
           },
           body: JSON.stringify({
             pregunta: message,
-            historial: [] // si querés podés guardar historial real
+            historial: lastMessages 
           })
         });
     
@@ -66,6 +75,11 @@ export class BonsaiChatUI {
     }
     
 
+
+
+
+
+    
 
 
 
@@ -127,6 +141,42 @@ export class BonsaiChatUI {
     }
   }
   
+
+
+
+
+  function getLastMessages() {
+    const chatHistory = document.getElementById('chat-history');
+    const messages = chatHistory.querySelectorAll('.message');
+    
+    // 1. Filtrar mensajes relevantes (ignorar el mensaje inicial del bot)
+    const filteredMessages = Array.from(messages).filter(msg => {
+      const isInitialMsg = msg.classList.contains('bot-message') && msg.querySelector('.fa-ai');
+      return !isInitialMsg;
+    });
+  
+    // 2. Tomar últimos 10 mensajes (5 pares pregunta-respuesta)
+    const last10Messages = filteredMessages.slice(-10);
+  
+    // 3. Construir texto plano (formato optimizado para IA)
+    let plainText = '';
+    for (let i = 0; i < last10Messages.length; i++) {
+      const msg = last10Messages[i];
+      const isUser = msg.classList.contains('user-message');
+      const text = msg.querySelector('.message-body').textContent.trim();
+      
+      plainText += isUser 
+        ? `\n\n[Usuario]: ${text}` 
+        : `\n[Asistente]: ${text}`;
+    }
+  
+    return plainText.trim(); // Texto limpio, sin espacios innecesarios
+  }
+
+
+
+
+
   // Inicialización
   export function initChatUI() {
     return new BonsaiChatUI();
