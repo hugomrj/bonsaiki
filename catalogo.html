@@ -16,21 +16,25 @@
 </head>
 <body>
     <div  id="inicio"></div>
-    <!-- WhatsApp flotante -->
     <a href="https://wa.me/595961428296?text=Hola%20Bonsai%20Ki,%20quisiera%20información%20sobre%20sus%20bonsáis" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
 
-    <nav id="nav_main" 
-        class="navbar is-fixed-top" 
-        role="navigation" 
+    <nav id="nav_main"
+        class="navbar is-fixed-top"
+        role="navigation"
         aria-label="main navigation">
     </nav>
 
 
-    <section id="catalogo" class="section">
+    <section class="section">
         <div class="container">
+            <div id="mensaje-api" class="notification is-info is-light" style="margin-bottom: 20px; display: none;">
+                <button class="delete" onclick="this.parentNode.style.display = 'none';"></button>
+                <p><strong>Mensaje de la API:</strong> <span id="api-message-content"></span></p>
+            </div>
+
             <h2 class="title is-2 section-title">Nuestro Catálogo de Bonsáis</h2>
             <div class="columns is-multiline is-centered">
                 <div class="column is-12-mobile is-6-tablet is-4-desktop">
@@ -110,25 +114,18 @@
 
 
 
-    <script type="module">
-        import { initMenu } from './assets/menu.js'; // Ruta corregida
-        document.addEventListener("DOMContentLoaded", initMenu);
-    </script>
-
 
 
 <script type="module">
-    import { initMenu } from './assets/js/menu.js';     
+    import { initMenu } from './assets/js/menu.js';
     import { initFooter } from './assets/js/footer.js';
 
     document.addEventListener("DOMContentLoaded", () => {
-        initMenu(); 
-        initFooter(); 
+        initMenu();
+        initFooter();
 
     });
 </script>
-
-
 
 
     <script>
@@ -166,6 +163,47 @@
                     });
                 }
              });
+        });
+    </script>
+
+    <script>
+        // Script para llamar a la API y mostrar el resultado
+        document.addEventListener('DOMContentLoaded', () => {
+            const apiUrl = 'http://3.12.160.19/hnasociados/hola/';
+            const mensajeApiDiv = document.getElementById('mensaje-api');
+            const apiMessageContentSpan = document.getElementById('api-message-content');
+
+            // Usamos la API fetch para hacer la solicitud GET
+            fetch(apiUrl)
+                .then(response => {
+                    // Verificamos si la respuesta es exitosa (código 200-299)
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status}`);
+                    }
+                    // Parseamos la respuesta como JSON
+                    return response.json();
+                })
+                .then(data => {
+                    // Cuando recibimos los datos JSON, verificamos si tienen la clave 'message'
+                    if (data && data.message) {
+                        // Insertamos el mensaje en el elemento span
+                        apiMessageContentSpan.textContent = data.message;
+                        // Hacemos visible el div que contiene el mensaje
+                        mensajeApiDiv.style.display = 'block';
+                    } else {
+                        // Si el JSON no tiene la clave esperada
+                        apiMessageContentSpan.textContent = 'Formato de API inesperado.';
+                         mensajeApiDiv.style.display = 'block'; // Mostrar el div con el mensaje de error
+                    }
+                })
+                .catch(error => {
+                    // Manejamos cualquier error que ocurra durante la solicitud
+                    console.error('Error al obtener datos de la API:', error);
+                    apiMessageContentSpan.textContent = `No se pudo cargar el mensaje de la API: ${error.message}`;
+                    mensajeApiDiv.style.display = 'block'; // Mostrar el div con el mensaje de error
+                    mensajeApiDiv.classList.remove('is-info', 'is-light'); // Opcional: cambiar estilo a error
+                    mensajeApiDiv.classList.add('is-danger');
+                });
         });
     </script>
 
