@@ -28,7 +28,7 @@ function genNavbar() {
                         Contacto
                     </a>
                     <a class="navbar-item" href="index.html#chat-ia">
-                        Chat IA
+                        Asistente Virtual
                     </a>
 
 
